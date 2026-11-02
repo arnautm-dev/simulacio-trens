@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joc trens</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark">
+            <span class="mark-track"></span>
+            <span class="mark-wheel wheel-left"></span>
+            <span class="mark-wheel wheel-right"></span>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">JOC TRENS</div>
+            <div class="brand-subtitle">Xarxa de Catalunya</div>
+          </div>
+        </div>
+
+        <div class="topbar-metrics">
+          <div class="metric large">
+            <span>Capital</span>
+            <strong>125.450 €</strong>
+            <em class="positive">+2.340 €</em>
+          </div>
+          <div class="metric compact">
+            <span>Hora</span>
+            <strong>08:45</strong>
+          </div>
+          <div class="metric compact">
+            <span>Data</span>
+            <strong>Dilluns, 12 març</strong>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="icon-button has-alert" aria-label="Notificacions">
+            <span class="icon-bell"></span>
+          </button>
+          <button class="icon-button" aria-label="Pausa">
+            <span class="icon-pause"></span>
+          </button>
+          <div class="speed-selector" aria-label="Velocitat del joc">
+            <button class="speed-option">1×</button>
+            <button class="speed-option">2×</button>
+            <button class="speed-option active">4×</button>
+          </div>
+          <button class="save-button">
+            <span class="icon-disk"></span>
+            Desar
+          </button>
+          <button class="icon-button menu-button" aria-label="Menú">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <aside class="toolbar">
+          <button class="tool-button active" data-panel="construction" aria-label="Construcció">
+            <span class="tool-rail"></span>
+          </button>
+          <button class="tool-button" data-panel="stations" aria-label="Estacions">
+            <span class="tool-station"></span>
+          </button>
+          <button class="tool-button" data-panel="lines" aria-label="Línies">
+            <span class="tool-lines"></span>
+          </button>
+          <button class="tool-button" data-panel="trains" aria-label="Trens">
+            <span class="tool-train"></span>
+          </button>
+          <button class="tool-button" data-panel="stats" aria-label="Estadístiques">
+            <span class="tool-chart"></span>
+          </button>
+          <button class="tool-button" data-panel="layers" aria-label="Capes del mapa">
+            <span class="tool-layers"></span>
+          </button>
+          <button class="tool-button" data-panel="settings" aria-label="Configuració">
+            <span class="tool-settings"></span>
+          </button>
+        </aside>
+
+        <aside class="tool-panel visible" id="panel-construction">
+          <div class="tool-panel-header">Construcció</div>
+          <div class="section-block">
+            <div class="section-label">Vies</div>
+            <button class="menu-item active">Via única</button>
+            <button class="menu-item">Via doble</button>
+            <button class="menu-item">Via d’alta velocitat</button>
+          </div>
+          <div class="section-block">
+            <div class="section-label">Estacions</div>
+            <button class="menu-item">Construir estació</button>
+          </div>
+          <div class="section-block info-box">
+            <div class="info-label">Cost estimat</div>
+            <div class="info-value">18.400 €</div>
+            <div class="info-label">Tipus de construcció</div>
+            <div class="info-value muted">Via única</div>
+            <div class="info-copy">Traçat provisional amb connexió directa entre estacions.</div>
+          </div>
+          <div class="panel-actions">
+            <button class="action-button primary disabled">Confirmar construcció</button>
+            <button class="action-button">Cancel·lar</button>
+          </div>
+        </aside>
+
+        <aside class="tool-panel" id="panel-stations">
+          <div class="tool-panel-header">Estacions</div>
+          <button class="menu-item active">Construir estació</button>
+          <button class="menu-item">Llista d’estacions</button>
+          <button class="menu-item">Buscar estació</button>
+          <div class="station-list">
+            <div class="station-row selected">
+              <span class="mini-icon station-mini"></span>
+              <div>
+                <strong>Barcelona Sants</strong>
+                <small>2.240 passatgers</small>
+              </div>
+              <span class="count-pill">4</span>
+            </div>
+            <div class="station-row">
+              <span class="mini-icon station-mini"></span>
+              <div>
+                <strong>Girona</strong>
+                <small>1.180 passatgers</small>
+              </div>
+              <span class="count-pill">2</span>
+            </div>
+            <div class="station-row">
+              <span class="mini-icon station-mini"></span>
+              <div>
+                <strong>Tarragona</strong>
+                <small>970 passatgers</small>
+              </div>
+              <span class="count-pill">3</span>
+            </div>
+          </div>
+        </aside>
+
+        <aside class="tool-panel" id="panel-lines">
+          <div class="tool-panel-header">Línies</div>
+          <button class="action-button primary compact">Crear línia</button>
+          <div class="lines-list">
+            <div class="line-item">
+              <span class="line-dot blue"></span>
+              <div>
+                <strong>L1 Barcelona · Mataró</strong>
+                <small>6 trens · Servei actiu</small>
+              </div>
+            </div>
+            <div class="line-item">
+              <span class="line-dot green"></span>
+              <div>
+                <strong>L2 Barcelona · Granollers</strong>
+                <small>4 trens · Servei actiu</small>
+              </div>
+            </div>
+            <div class="line-item">
+              <span class="line-dot red"></span>
+              <div>
+                <strong>L3 Barcelona · Vilanova</strong>
+                <small>3 trens · Servei actiu</small>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <aside class="tool-panel" id="panel-trains">
+          <div class="tool-panel-header">Trens</div>
+          <div class="button-row">
+            <button class="action-button primary compact">Comprar tren</button>
+            <button class="action-button compact">Flota</button>
+          </div>
+          <div class="train-list">
+            <div class="train-row">
+              <span class="mini-icon train-mini"></span>
+              <div>
+                <strong>T-03</strong>
+                <small>Model AV-250 · L1</small>
+              </div>
+              <span class="status live">En circulació</span>
+            </div>
+            <div class="train-row">
+              <span class="mini-icon train-mini"></span>
+              <div>
+                <strong>T-08</strong>
+                <small>Model C-72 · L2</small>
+              </div>
+              <span class="status waiting">Esperant via</span>
+            </div>
+            <div class="train-row">
+              <span class="mini-icon train-mini"></span>
+              <div>
+                <strong>T-11</strong>
+                <small>Model Regional</small>
+              </div>
+              <span class="status idle">Sense assignar</span>
+            </div>
+          </div>
+        </aside>
+
+        <aside class="tool-panel" id="panel-stats">
+          <div class="tool-panel-header">Estadístiques</div>
+          <div class="kpis-grid small-grid">
+            <div class="mini-stat">
+              <span>Capital</span>
+              <strong>125.450 €</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Ingressos</span>
+              <strong>22.300 €</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Despeses</span>
+              <strong>18.600 €</strong>
+            </div>
+            <div class="mini-stat positive">
+              <span>Benefici</span>
+              <strong>+3.700 €</strong>
+            </div>
+          </div>
+          <div class="stats-list">
+            <div class="stat-line"><span>Passatgers</span><strong>154.200</strong></div>
+            <div class="stat-line"><span>Demanda no atesa</span><strong>12,4%</strong></div>
+            <div class="stat-line"><span>Ocupació</span><strong>74%</strong></div>
+            <div class="stat-line"><span>Rendiment</span><strong>91%</strong></div>
+          </div>
+          <div class="mini-chart">
+            <span style="height: 24%"></span>
+            <span style="height: 36%"></span>
+            <span style="height: 32%"></span>
+            <span style="height: 58%"></span>
+            <span style="height: 70%"></span>
+            <span style="height: 54%"></span>
+            <span style="height: 76%"></span>
+          </div>
+          <div class="panel-actions">
+            <button class="action-button compact">Informe financer</button>
+            <button class="action-button compact">Historial</button>
+          </div>
+        </aside>
+
+        <aside class="tool-panel" id="panel-layers">
+          <div class="tool-panel-header">Capes del mapa</div>
+          <div class="toggle-list">
+            <label><span>Geografia</span><input type="checkbox" checked /></label>
+            <label><span>Ciutats</span><input type="checkbox" checked /></label>
+            <label><span>Vies ferroviàries</span><input type="checkbox" checked /></label>
+            <label><span>Estacions</span><input type="checkbox" checked /></label>
+            <label><span>Línies</span><input type="checkbox" checked /></label>
+            <label><span>Trens</span><input type="checkbox" checked /></label>
+            <label><span>Etiquetes</span><input type="checkbox" checked /></label>
+            <label><span>Zones de cost</span><input type="checkbox" /></label>
+          </div>
+        </aside>
+
+        <aside class="tool-panel" id="panel-settings">
+          <div class="tool-panel-header">Configuració</div>
+          <div class="settings-list">
+            <div class="setting-item"><span>Zoom</span><strong>100%</strong></div>
+            <div class="setting-item"><span>Animacions</span><strong>Actives</strong></div>
+            <div class="setting-item"><span>Desament automàtic</span><strong>5 min</strong></div>
+          </div>
+        </aside>
+
+        <main class="map-panel">
+          <svg class="map-canvas" viewBox="0 0 980 710" preserveAspectRatio="xMidYMid meet" aria-label="Mapa de Catalunya">
+            <defs>
+              <linearGradient id="sea" x1="0" x2="1">
+                <stop offset="0%" stop-color="#0d1a22" />
+                <stop offset="100%" stop-color="#132c39" />
+              </linearGradient>
+            </defs>
+
+            <rect width="980" height="710" fill="#111a22" />
+            <path d="M120 130 L230 100 L310 150 L420 128 L540 182 L620 160 L710 220 L790 250 L865 310 L820 420 L760 510 L700 560 L620 615 L490 600 L420 560 L350 590 L270 540 L170 470 L140 375 L90 260 Z" fill="#1a242d" stroke="#2a3943" stroke-width="2" />
+            <path d="M120 130 L230 100 L310 150 L420 128 L540 182 L620 160 L710 220 L790 250 L865 310 L820 420 L760 510 L700 560 L620 615 L490 600 L420 560 L350 590 L270 540 L170 470 L140 375 L90 260 Z" fill="none" stroke="#2d3a44" stroke-width="3" opacity="0.8" />
+            <path d="M70 0 L250 0 L290 120 L430 140 L550 100 L700 170 L980 230 L980 710 L0 710 L0 100 Z" fill="url(#sea)" opacity="0.9" />
+
+            <path d="M120 210 C180 160, 260 165, 300 220 S390 270, 430 260 S520 190, 585 225 S705 255, 760 310" fill="none" stroke="#486778" stroke-width="8" opacity="0.65" stroke-linecap="round" />
+            <path d="M310 470 C370 430, 425 420, 480 470 S600 520, 660 500" fill="none" stroke="#486778" stroke-width="7" opacity="0.5" stroke-linecap="round" />
+
+            <path d="M285 260 L380 230 L495 290 L610 315 L710 360 L760 430" fill="none" stroke="#4ac0f4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+            <path d="M215 385 L290 430 L370 410 L470 470 L550 440 L635 495" fill="none" stroke="#50d28b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+            <path d="M395 155 L470 210 L560 205 L640 260 L690 315" fill="none" stroke="#ff8a5b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+            <path d="M520 120 L585 185 L635 250 L725 290" fill="none" stroke="#c07dff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+            <path d="M300 510 L380 550 L500 530 L565 575" fill="none" stroke="#f3cb56" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+
+            <g class="city-layer">
+              <circle cx="380" cy="230" r="6" fill="#f4f7fa" />
+              <circle cx="495" cy="290" r="5" fill="#f4f7fa" />
+              <circle cx="610" cy="315" r="5.5" fill="#f4f7fa" />
+              <circle cx="710" cy="360" r="6" fill="#f4f7fa" />
+              <circle cx="760" cy="430" r="6" fill="#f4f7fa" />
+              <circle cx="285" cy="260" r="5" fill="#f4f7fa" />
+              <circle cx="215" cy="385" r="5" fill="#f4f7fa" />
+              <circle cx="395" cy="155" r="5" fill="#f4f7fa" />
+              <circle cx="520" cy="120" r="5" fill="#f4f7fa" />
+              <circle cx="300" cy="510" r="5" fill="#f4f7fa" />
+              <circle cx="565" cy="575" r="5" fill="#f4f7fa" />
+              <circle cx="650" cy="510" r="6" fill="#f4f7fa" />
+              <circle cx="585" cy="185" r="5" fill="#f4f7fa" />
+              <circle cx="635" cy="250" r="5" fill="#f4f7fa" />
+            </g>
+
+            <g class="label-layer">
+              <text x="364" y="210" class="city-label city-main">Barcelona</text>
+              <text x="472" y="270" class="city-label">Girona</text>
+              <text x="600" y="300" class="city-label">Tarragona</text>
+              <text x="708" y="346" class="city-label">Lleida</text>
+              <text x="770" y="418" class="city-label">Andalusia</text>
+              <text x="255" y="250" class="city-label">Figueres</text>
+              <text x="180" y="378" class="city-label">Lleida</text>
+              <text x="385" y="145" class="city-label">Vallès</text>
+              <text x="508" y="112" class="city-label">Mataró</text>
+            </g>
+
+            <g class="vehicles-layer">
+              <g transform="translate(395 330) scale(1.0)" class="rail-train train-selected">
+                <rect x="-12" y="-7" width="24" height="14" rx="5" fill="#4ac0f4" />
+                <rect x="-9" y="-3" width="18" height="6" rx="3" fill="#d9edf8" opacity="0.88" />
+                <circle cx="-8" cy="11" r="4" fill="#b2c4d0" />
+                <circle cx="8" cy="11" r="4" fill="#b2c4d0" />
+              </g>
+              <g transform="translate(565 370) scale(1.0)">
+                <rect x="-12" y="-7" width="24" height="14" rx="5" fill="#50d28b" />
+                <rect x="-9" y="-3" width="18" height="6" rx="3" fill="#d9edf8" opacity="0.88" />
+                <circle cx="-8" cy="11" r="4" fill="#b2c4d0" />
+                <circle cx="8" cy="11" r="4" fill="#b2c4d0" />
+              </g>
+            </g>
+          </svg>
+
+          <div class="map-floating map-left-legend">
+            <div class="legend-header">Línies</div>
+            <div class="legend-row"><span class="legend-dot blue"></span> L1 Barcelona · Mataró</div>
+            <div class="legend-row"><span class="legend-dot green"></span> L2 Barcelona · Granollers</div>
+            <div class="legend-row"><span class="legend-dot red"></span> L3 Barcelona · Vilanova</div>
+          </div>
+
+          <div class="map-floating map-right-controls">
+            <button aria-label="Ampliar">+</button>
+            <button aria-label="Reduir">−</button>
+            <button aria-label="Centrar mapa">Centrar</button>
+            <button aria-label="Vista general">Vista general</button>
+          </div>
+
+          <div class="floating-notification info">
+            <span class="notification-icon"></span>
+            <div>
+              <strong>El tren T-03 ha arribat a Barcelona.</strong>
+              <small>08:42</small>
+            </div>
+            <button class="dismiss">×</button>
+          </div>
+        </main>
+
+        <aside class="context-panel">
+          <div class="panel-head">
+            <div>Resum de la xarxa</div>
+            <button class="panel-close">×</button>
+          </div>
+
+          <div class="summary-grid">
+            <div class="summary-stat">
+              <span>Estacions</span>
+              <strong>48</strong>
+            </div>
+            <div class="summary-stat">
+              <span>Línies</span>
+              <strong>12</strong>
+            </div>
+            <div class="summary-stat">
+              <span>Trens</span>
+              <strong>26</strong>
+            </div>
+            <div class="summary-stat highlight">
+              <span>Capital</span>
+              <strong>125.450 €</strong>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-title">Activitat recent</div>
+            <ul class="activity-list">
+              <li><span class="activity-bullet blue"></span> L1 reforçada amb 2 trens addicionals</li>
+              <li><span class="activity-bullet green"></span> Barcelona registra demanda alta a les hores punta</li>
+              <li><span class="activity-bullet orange"></span> Nova estació a l’àrea de Girona en construcció</li>
+            </ul>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-title">Estat general</div>
+            <div class="status-meter">
+              <span style="width: 78%"></span>
+            </div>
+            <div class="status-copy">Operació estable · Rendiment òptim · Demanda creixent</div>
+          </div>
+
+          <div class="panel-section compact-section">
+            <div class="section-title">Línies principals</div>
+            <div class="line-tag-list">
+              <span class="line-tag blue">L1</span>
+              <span class="line-tag green">L2</span>
+              <span class="line-tag red">L3</span>
+              <span class="line-tag purple">L4</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="screen-overlay visible menu-screen" id="menu-screen">
+      <div class="screen-card menu-card">
+        <div class="screen-brand">
+          <div class="brand-mark big">
+            <span class="mark-track"></span>
+            <span class="mark-wheel wheel-left"></span>
+            <span class="mark-wheel wheel-right"></span>
+          </div>
+          <div>
+            <div class="screen-title">JOC TRENS</div>
+            <div class="screen-subtitle">Construeix la teva xarxa ferroviària</div>
+          </div>
+        </div>
+
+        <div class="menu-illustration" aria-hidden="true">
+          <div class="mini-map"></div>
+          <div class="mini-line line-a"></div>
+          <div class="mini-line line-b"></div>
+          <div class="mini-line line-c"></div>
+          <div class="mini-dot dot-a"></div>
+          <div class="mini-dot dot-b"></div>
+          <div class="mini-dot dot-c"></div>
+        </div>
+
+        <div class="menu-actions">
+          <button class="primary action-button wide" data-show="new-game">Nova partida</button>
+          <button class="action-button wide" data-show="continue-game">Continuar partida</button>
+          <button class="action-button wide" data-show="load-save">Carregar partida</button>
+          <button class="action-button wide" data-show="settings-screen">Configuració</button>
+          <button class="action-button wide" data-show="credits-screen">Crèdits</button>
+          <button class="action-button wide danger">Sortir</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-overlay hidden" id="new-game-screen">
+      <div class="screen-card form-card">
+        <div class="modal-topbar">
+          <div class="form-title">Nova partida</div>
+          <button class="close-button" data-hide="new-game-screen">×</button>
+        </div>
+
+        <div class="form-grid">
+          <label class="field-label">
+            <span>Nom de la partida</span>
+            <input type="text" value="Xarxa de Catalunya" />
+          </label>
+          <label class="field-label">
+            <span>Capital inicial</span>
+            <select>
+              <option>150.000 €</option>
+              <option selected>200.000 €</option>
+              <option>300.000 €</option>
+            </select>
+          </label>
+          <label class="field-label">
+            <span>Nivell de dificultat</span>
+            <select>
+              <option>Relaxada</option>
+              <option selected>Normal</option>
+              <option>Difícil</option>
+            </select>
+          </label>
+          <label class="field-label">
+            <span>Regió inicial</span>
+            <select>
+              <option>Barcelona</option>
+              <option selected>Girona</option>
+              <option>Tarragona</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="bottom-actions">
+          <button class="action-button" data-hide="new-game-screen">Tornar</button>
+          <button class="primary action-button" data-show="game-view">Començar partida</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-overlay hidden" id="settings-screen">
+      <div class="screen-card form-card">
+        <div class="modal-topbar">
+          <div class="form-title">Configuració</div>
+          <button class="close-button" data-hide="settings-screen">×</button>
+        </div>
+
+        <div class="settings-block">
+          <div class="settings-group">
+            <div class="section-label">Pantalla</div>
+            <div class="setting-row"><span>Resolució</span><strong>1920 × 1080</strong></div>
+            <div class="setting-row"><span>Qualitat visual</span><strong>Alta</strong></div>
+          </div>
+          <div class="settings-group">
+            <div class="section-label">Interfície</div>
+            <div class="setting-row"><span>Text</span><strong>13 px</strong></div>
+            <div class="setting-row"><span>Etiquetes</span><strong>Actives</strong></div>
+            <div class="setting-row"><span>Animacions</span><strong>Suaves</strong></div>
+          </div>
+        </div>
+
+        <div class="bottom-actions">
+          <button class="action-button" data-hide="settings-screen">Tancar</button>
+          <button class="primary action-button" data-hide="settings-screen">Desar configuració</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-overlay hidden" id="credits-screen">
+      <div class="screen-card form-card small-card">
+        <div class="modal-topbar">
+          <div class="form-title">Crèdits</div>
+          <button class="close-button" data-hide="credits-screen">×</button>
+        </div>
+        <div class="credits-copy">
+          <p>JOC TRENS</p>
+          <p>Versió 1.0</p>
+          <p>Equip de disseny i direcció artística</p>
+          <p>Interfície de gestió ferroviària per a navegador</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="purchase-modal">
+      <div class="modal-window purchase-window">
+        <div class="modal-topbar">
+          <div class="form-title">Comprar tren</div>
+          <button class="close-button" data-hide="purchase-modal">×</button>
+        </div>
+        <div class="catalog-grid">
+          <div class="train-card active">
+            <div class="train-card-icon"></div>
+            <div class="train-card-header">
+              <strong>Regional 200</strong>
+              <span>Convencional</span>
+            </div>
+            <div class="train-card-meta"><span>Velocitat</span><strong>140 km/h</strong></div>
+            <div class="train-card-meta"><span>Capacitat</span><strong>320</strong></div>
+            <div class="train-card-meta"><span>Preu</span><strong>28.000 €</strong></div>
+            <button class="action-button tiny">Comprar</button>
+          </div>
+          <div class="train-card">
+            <div class="train-card-icon alt"></div>
+            <div class="train-card-header">
+              <strong>AV-250</strong>
+              <span>Alta velocitat</span>
+            </div>
+            <div class="train-card-meta"><span>Velocitat</span><strong>250 km/h</strong></div>
+            <div class="train-card-meta"><span>Capacitat</span><strong>480</strong></div>
+            <div class="train-card-meta"><span>Preu</span><strong>62.000 €</strong></div>
+            <button class="action-button tiny">Comprar</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span>Capital disponible: 125.450 €</span>
+          <div class="bottom-actions">
+            <button class="action-button" data-hide="purchase-modal">Cancel·lar</button>
+            <button class="primary action-button" data-hide="purchase-modal">Confirmar compra</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="line-modal">
+      <div class="modal-window line-window">
+        <div class="modal-topbar">
+          <div class="form-title">Crear línia</div>
+          <button class="close-button" data-hide="line-modal">×</button>
+        </div>
+        <div class="line-form-grid">
+          <label class="field-label">
+            <span>Nom de la línia</span>
+            <input type="text" value="L4 Barcelona · Girona" />
+          </label>
+          <label class="field-label">
+            <span>Color identificatiu</span>
+            <input type="text" value="#4ac0f4" />
+          </label>
+          <label class="field-label wide">
+            <span>Parades</span>
+            <input type="text" value="Barcelona Sants · Girona · Figueres" />
+          </label>
+          <label class="field-label">
+            <span>Freqüència</span>
+            <select>
+              <option>10 min</option>
+              <option selected>15 min</option>
+              <option>30 min</option>
+            </select>
+          </label>
+        </div>
+        <div class="route-preview">
+          <div class="route-line"></div>
+          <div class="route-point p1"></div>
+          <div class="route-point p2"></div>
+          <div class="route-point p3"></div>
+        </div>
+        <div class="bottom-actions">
+          <button class="action-button" data-hide="line-modal">Cancel·lar</button>
+          <button class="primary action-button" data-hide="line-modal">Crear línia</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
