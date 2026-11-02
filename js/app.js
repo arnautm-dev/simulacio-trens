@@ -1,3 +1,5 @@
+import '../ui/timeController.js';
+
 const toolButtons = document.querySelectorAll('.tool-button');
 const toolPanels = document.querySelectorAll('.tool-panel');
 
@@ -62,15 +64,6 @@ if (menuButton) {
     const menu = document.getElementById('menu-screen');
     menu.classList.remove('hidden');
     menu.classList.add('visible');
-  });
-}
-
-const saveButton = document.querySelector('.save-button');
-if (saveButton) {
-  saveButton.addEventListener('click', () => {
-    const modal = document.getElementById('purchase-modal');
-    modal.classList.remove('hidden');
-    modal.classList.add('visible');
   });
 }
 

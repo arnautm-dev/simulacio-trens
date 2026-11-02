@@ -27,3 +27,15 @@ I després obre `http://localhost:8000`.
 - Configuració i crèdits
 
 Aquest és un prototip visual sense lògica funcional ni simulació del joc.
+
+## Sistema de temps
+
+El rellotge de simulació utilitza una data UTC interna (per defecte, 01/01/2026 a les 06:00:00) i no consulta el rellotge de l’ordinador. La data inicial es pot canviar a `DEFAULT_START_DATE` de `core/gameClock.js`; els multiplicadors es configuren a `core/simulationSpeed.js`.
+
+El temps avança amb `requestAnimationFrame`, amb el delta limitat a un segon per fotograma i congelat quan la pestanya queda en segon pla. La pausa manual no canvia la velocitat seleccionada. El botó «Desar» desa exclusivament les dades de temps a l’emmagatzematge local del navegador; «Continuar partida» i «Carregar partida» les recuperen.
+
+Per executar les proves del rellotge amb Node.js 24:
+
+```bash
+node --test tests/time.test.js
+```

@@ -28,12 +28,8 @@
             <em class="positive">+2.340 €</em>
           </div>
           <div class="metric compact">
-            <span>Hora</span>
-            <strong>08:45</strong>
-          </div>
-          <div class="metric compact">
-            <span>Data</span>
-            <strong>Dilluns, 12 març</strong>
+            <span>Data i hora</span>
+            <strong id="game-date-time">01/01/2026 — 06:00:00</strong>
           </div>
         </div>
 
@@ -41,18 +37,26 @@
           <button class="icon-button has-alert" aria-label="Notificacions">
             <span class="icon-bell"></span>
           </button>
-          <button class="icon-button" aria-label="Pausa">
+          <button class="icon-button" id="time-toggle" type="button" aria-label="Pausar el temps" aria-pressed="false">
             <span class="icon-pause"></span>
           </button>
-          <div class="speed-selector" aria-label="Velocitat del joc">
-            <button class="speed-option">1×</button>
-            <button class="speed-option">2×</button>
-            <button class="speed-option active">4×</button>
+          <span class="time-state" id="time-state" aria-live="polite">En marxa</span>
+          <div class="speed-controls" aria-label="Controls de velocitat">
+            <button class="speed-step" id="speed-down" type="button" aria-label="Reduir la velocitat">−</button>
+            <div class="speed-selector" role="group" aria-label="Selecciona la velocitat del joc">
+              <button class="speed-option" type="button" data-speed="1" aria-pressed="false">1×</button>
+              <button class="speed-option" type="button" data-speed="2" aria-pressed="false">2×</button>
+              <button class="speed-option active" type="button" data-speed="4" aria-pressed="true">4×</button>
+              <button class="speed-option" type="button" data-speed="8" aria-pressed="false">8×</button>
+              <button class="speed-option" type="button" data-speed="16" aria-pressed="false">16×</button>
+            </div>
+            <button class="speed-step" id="speed-up" type="button" aria-label="Augmentar la velocitat">+</button>
           </div>
-          <button class="save-button">
+          <button class="save-button" type="button">
             <span class="icon-disk"></span>
             Desar
           </button>
+          <span class="time-save-status" id="time-save-status" role="status" aria-live="polite"></span>
           <button class="icon-button menu-button" aria-label="Menú">
             <span class="icon-menu"></span>
           </button>

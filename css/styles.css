@@ -75,9 +75,9 @@ button {
 
 .topbar {
   display: grid;
-  grid-template-columns: 1.1fr 1.5fr 1fr;
+  grid-template-columns: minmax(150px, 1fr) auto minmax(0, 1.5fr);
   align-items: center;
-  gap: 20px;
+  gap: 14px;
   height: var(--topbar-height);
   padding: 10px 18px 10px 16px;
   background: rgba(19, 25, 31, 0.92);
@@ -144,7 +144,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
+  white-space: nowrap;
 }
 
 .metric {
@@ -189,10 +190,11 @@ button {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
+  min-width: 0;
 }
 
-.icon-button, .save-button, .speed-selector .speed-option, .menu-button {
+.icon-button, .save-button, .speed-selector .speed-option, .menu-button, .speed-step {
   border: 1px solid var(--border);
   background: rgba(255,255,255,0.03);
   color: var(--text);
@@ -209,7 +211,11 @@ button {
   position: relative;
 }
 
-.icon-button:hover, .save-button:hover, .speed-option:hover, .menu-button:hover {
+#time-toggle {
+  flex: 0 0 34px;
+}
+
+.icon-button:hover, .save-button:hover, .speed-option:hover, .menu-button:hover, .speed-step:hover {
   background: rgba(255,255,255,0.08);
   border-color: rgba(160, 180, 195, 0.28);
   transform: translateY(-1px);
@@ -229,6 +235,7 @@ button {
 
 .icon-bell,
 .icon-pause,
+.icon-play,
 .icon-disk,
 .icon-menu,
 .tool-cursor,
@@ -286,6 +293,16 @@ button {
 .icon-pause::before { left: 6px; }
 .icon-pause::after { right: 6px; }
 
+.icon-play::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid var(--text);
+}
+
 .icon-disk::before {
   content: "";
   position: absolute;
@@ -332,15 +349,16 @@ button {
 
 .speed-selector {
   display: inline-flex;
-  gap: 4px;
-  padding: 4px;
+  gap: 2px;
+  padding: 3px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: rgba(255,255,255,0.02);
+  flex: 0 0 auto;
 }
 
 .speed-option {
-  width: 38px;
+  width: 32px;
   height: 26px;
   border: 0;
   background: transparent;
@@ -353,6 +371,46 @@ button {
   background: rgba(85, 166, 232, 0.2);
   color: var(--text);
   border-radius: 7px;
+}
+
+.speed-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.speed-step {
+  width: 25px;
+  height: 28px;
+  padding: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.speed-step:disabled {
+  cursor: default;
+  opacity: 0.4;
+  transform: none;
+}
+
+.time-state {
+  width: 52px;
+  flex: 0 0 52px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.time-save-status {
+  max-width: 120px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .save-button {
@@ -1549,7 +1607,8 @@ button {
   }
 
   .topbar {
-    grid-template-columns: 1fr 1.3fr 1fr;
+    grid-template-columns: minmax(130px, 1fr) auto minmax(0, 1.5fr);
+    gap: 8px;
   }
 }
 
@@ -1563,9 +1622,74 @@ button {
   }
 
   .topbar-metrics {
-    gap: 10px;
+    gap: 8px;
   }
-  .metric.compact {
+
+  .metric.compact strong {
+    font-size: 12px;
+  }
+
+  .topbar-actions {
+    gap: 4px;
+  }
+
+  .speed-option {
+    width: 27px;
+    font-size: 11px;
+  }
+
+  .save-button {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 960px) {
+  .topbar {
+    grid-template-columns: auto auto minmax(0, 1fr);
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .brand-subtitle,
+  .has-alert {
     display: none;
+  }
+
+  .topbar-metrics .metric.large {
+    display: none;
+  }
+
+  .topbar-metrics {
+    gap: 6px;
+  }
+
+  .metric span {
+    font-size: 9px;
+  }
+
+  .metric.compact strong {
+    font-size: 11px;
+  }
+
+  .topbar-actions {
+    gap: 3px;
+  }
+
+  .speed-step {
+    width: 20px;
+  }
+
+  .speed-option {
+    width: 23px;
+    padding: 0;
+  }
+
+  .save-button {
+    padding: 0 6px;
+    font-size: 0;
+  }
+
+  .save-button .icon-disk {
+    margin: 0;
   }
 }
