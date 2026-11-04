@@ -983,11 +983,66 @@ button {
   pointer-events: none;
 }
 
-.map-canvas {
+#map-canvas {
   width: 100%;
   height: 100%;
   display: block;
-  background: linear-gradient(180deg, #0d1419 0%, #0f1921 100%);
+  background: linear-gradient(180deg, #dfeaf2 0%, #cfdfe9 100%);
+  z-index: 1;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #dfeaf2;
+  font: inherit;
+}
+
+.leaflet-control-attribution {
+  background: rgba(17, 24, 31, 0.78);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px 0 0 0;
+  border: 1px solid rgba(160, 180, 195, 0.12);
+}
+
+.leaflet-control-attribution a {
+  color: #d8ecff;
+}
+
+.map-loading,
+.map-error {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 2;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(17, 24, 31, 0.8);
+  border: 1px solid rgba(160, 180, 195, 0.18);
+  color: var(--text);
+  font-size: 11px;
+  backdrop-filter: blur(8px);
+}
+
+.map-loading {
+  color: var(--text);
+}
+
+.map-attribution {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  z-index: 2;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(18, 24, 30, 0.7);
+  border: 1px solid rgba(160, 180, 195, 0.12);
+  font-size: 10px;
+}
+
+.map-attribution a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
 }
 
 .city-label {

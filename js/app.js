@@ -1,5 +1,35 @@
 import '../ui/timeController.js';
 
+const mapElement = document.getElementById('map-canvas');
+if (mapElement && window.L) {
+    const map = L.map('map-canvas', {
+        zoomControl: false,
+        attributionControl: true,
+        worldCopyJump: true,
+    }).setView([41.8, 1.8], 7);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors',
+        crossOrigin: true,
+    }).addTo(map);
+
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    const loadingStatus = document.getElementById('map-loading-status');
+    if (loadingStatus) {
+        loadingStatus.textContent = 'Mapa OSM carregat';
+    }
+
+    window.addEventListener('load', () => {
+        map.invalidateSize();
+    });
+
+    window.addEventListener('resize', () => {
+        map.invalidateSize();
+    });
+}
+
 const toolButtons = document.querySelectorAll('.tool-button');
 const toolPanels = document.querySelectorAll('.tool-panel');
 
