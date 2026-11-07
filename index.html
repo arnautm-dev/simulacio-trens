@@ -93,24 +93,24 @@
           <div class="tool-panel-header">Construcció</div>
           <div class="section-block">
             <div class="section-label">Vies</div>
-            <button class="menu-item active">Via única</button>
-            <button class="menu-item">Via doble</button>
-            <button class="menu-item">Via d’alta velocitat</button>
+            <button class="menu-item active" data-role="track" data-track-type="single">Via única</button>
+            <button class="menu-item" data-role="track" data-track-type="double">Via doble</button>
+            <button class="menu-item" data-role="track" data-track-type="highSpeed">Via d’alta velocitat</button>
           </div>
           <div class="section-block">
             <div class="section-label">Estacions</div>
-            <button class="menu-item">Construir estació</button>
+            <button class="menu-item" data-role="station">Construir estació</button>
           </div>
           <div class="section-block info-box">
             <div class="info-label">Cost estimat</div>
-            <div class="info-value">18.400 €</div>
+            <div class="info-value" id="track-estimated-cost">180.000 €/km</div>
             <div class="info-label">Tipus de construcció</div>
-            <div class="info-value muted">Via única</div>
-            <div class="info-copy">Traçat provisional amb connexió directa entre estacions.</div>
+            <div class="info-value muted" id="track-type-label">Via única</div>
+            <div class="info-copy" id="track-construction-status">Clica per definir extrems i corbes. Retorn confirma; Esc cancel·la.</div>
           </div>
           <div class="panel-actions">
-            <button class="action-button primary disabled">Confirmar construcció</button>
-            <button class="action-button">Cancel·lar</button>
+            <button class="action-button primary disabled" id="confirm-track-construction" type="button" disabled>Confirmar construcció</button>
+            <button class="action-button" id="cancel-track-construction" type="button">Cancel·lar</button>
           </div>
         </aside>
 
